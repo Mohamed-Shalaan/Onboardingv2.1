@@ -36,10 +36,20 @@ def display_question(q_data):
     st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
     
     responses_list = []
-    for i, option in enumerate(options):
-        selected = st.checkbox(option, key=f"option_{st.session_state['question_index']}_{i}")
-        if selected:
-            responses_list.append((option, q_data["responses"][i][1]))
+    
+    # Use st.radio for single-select questions (questions 4, 5, 6)
+    if st.session_state['question_index'] in [3, 4, 5]:  # Indexes for questions 4, 5, 6
+        selected_option = st.radio("", options, key=f"radio_{st.session_state['question_index']}")
+        for option, skill in q_data["responses"]:
+            if option == selected_option:
+                responses_list.append((option, skill))
+                break
+    else:
+        # Use st.checkbox for multi-select questions (questions 1, 2, 3)
+        for i, option in enumerate(options):
+            selected = st.checkbox(option, key=f"option_{st.session_state['question_index']}_{i}")
+            if selected:
+                responses_list.append((option, q_data["responses"][i][1]))
     
     return responses_list
 
@@ -222,4 +232,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Version: 1.1 - Optimized CSS loading, added progress indicator, enforced response selection, improved level determination logic.
+# Version: 1.2 - Updated to use st.radio for single-select questions (questions 4, 5, 6).
