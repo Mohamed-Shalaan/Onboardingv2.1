@@ -23,6 +23,9 @@ def initialize_session_state():
         st.session_state['background_completed'] = False
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
+        st.session_state['work_nature'] = None  # Initialize work_nature
+        st.session_state['language_preference'] = None  # Initialize language_preference
+        st.session_state['language_usage'] = None  # Initialize language_usage
 
 def apply_custom_styles():
     """Apply custom CSS styles."""
@@ -305,10 +308,11 @@ def main():
         selected_option = st.radio("", options, key="work_nature")
         
         # Store the selected response in session state
-        for option, value in work_nature_data["responses"]:
-            if option == selected_option:
-                st.session_state['work_nature'] = value
-                break
+        if selected_option:
+            for option, value in work_nature_data["responses"]:
+                if option == selected_option:
+                    st.session_state['work_nature'] = value
+                    break
 
         # Ask language preference and usage questions
         language_data = TRAIT_QUESTIONS["Language"]
@@ -321,15 +325,17 @@ def main():
         selected_language_usage = st.radio("", language_usage_data["options"], key="language_usage")
 
         # Store the selected responses in session state
-        for option, value in language_data["responses"]:
-            if option == selected_language:
-                st.session_state['language'] = value
-                break
+        if selected_language:
+            for option, value in language_data["responses"]:
+                if option == selected_language:
+                    st.session_state['language'] = value
+                    break
 
-        for option, value in language_usage_data["responses"]:
-            if option == selected_language_usage:
-                st.session_state['language_usage'] = value
-                break
+        if selected_language_usage:
+            for option, value in language_usage_data["responses"]:
+                if option == selected_language_usage:
+                    st.session_state['language_usage'] = value
+                    break
 
         # Add a button to submit background questions
         if st.button("إرسال الأسئلة الإضافية"):
