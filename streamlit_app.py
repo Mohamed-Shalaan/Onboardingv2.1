@@ -49,10 +49,21 @@ def apply_custom_styles():
             height: auto;
         }
         .question-text {
-            font-size: 1.8em; /* Larger font size for questions */
+            font-size: 1.5em; /* Slightly smaller font size for questions */
             font-weight: bold;
             color: #2c3e50; /* Dark blue color */
-            margin-bottom: 30px; /* Add more space below the question */
+            margin-bottom: 20px; /* Add more space below the question */
+            text-align: right; /* Align text to the right */
+        }
+        .level-question-text {
+            font-size: 1.4em; /* Smaller font size for level questions */
+            font-weight: bold;
+            color: #2c3e50; /* Dark blue color */
+            margin-bottom: 15px; /* Add more space below the question */
+            text-align: right; /* Align text to the right */
+        }
+        .option-text {
+            font-size: 1.2em; /* Larger font size for options */
             text-align: right; /* Align text to the right */
         }
         h2 {
@@ -299,7 +310,7 @@ def main():
             st.session_state['recommended_track'] = top_skill
 
         # Display level determination questions
-        st.markdown("<h2 style='text-align: center;'>تحديد المستوى</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='font-family: Cairo, sans-serif; text-align: center;'>تحديد المستوى</h2>", unsafe_allow_html=True)
         st.markdown(f"<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستواك في مجال {st.session_state['recommended_track']}.</p>", unsafe_allow_html=True)
 
         # Ask level determination questions
@@ -307,7 +318,7 @@ def main():
         for q_key, q_data in LEVEL_QUESTIONS.items():
             question = q_data["question"].replace("[Track Name]", st.session_state['recommended_track'])
             options = q_data["options"]
-            st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='level-question-text'>{question}</div>", unsafe_allow_html=True)
             
             selected_option = st.radio("", options, key=f"level_{q_key}")
             
