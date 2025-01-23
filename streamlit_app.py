@@ -161,4 +161,151 @@ def update_scores(responses_list, current_question_key):
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
     # Generate 3-letter abbreviation for the track
-   
+    track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
+    
+    # Map level to a numeric value
+    level_mapping = {"Beginner": "1", "Intermediate": "2", "Advanced": "3"}
+    level_code = level_mapping.get(level, "0")  # Default to "0" if level is not found
+    
+    # Map language to a letter
+    language_mapping = {"Arabic": "A", "English": "E"}
+    language_code = language_mapping.get(language, "U")  # Default to "U" (Unknown) if language is not found
+    
+    # Combine all parts into the result code
+    result_code = f"{track_abbr}{level_code}{language_code}"
+    return result_code
+
+def show_results():
+    """Display the results of the assessment."""
+    ranked_skills = sorted(st.session_state['score'].items(), key=lambda item: item[1], reverse=True)
+    st.session_state['results'] = ranked_skills
+    
+    if ranked_skills:
+        top_skill, _ = ranked_skills[0]
+        skill_data = SKILLS_INFO[top_skill]
+        
+        # Determine level and language based on user's session state
+        level = st.session_state.get('level', 'Beginner')
+        language = st.session_state.get('language', 'Arabic')
+        
+        # Find recommended course
+        recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
+        
+        # Generate result code
+        result_code = generate_course_hint(top_skill, level, language)
+        
+        # Use inline styles for the results section
+        st.markdown(
+            f"""
+            <div class='results-section'>
+                <h2 style='font-family: Cairo, sans-serif;'>التراك المقترح ليك : <span style='color: tomato;'>{top_skill}</span></h2>
+                <h3 style='font-family: Cairo, sans-serif;'>الكورس اللى هتبدأ فيه:</h3>
+                <p>- {recommended_course['name'] if recommended_course else 'No course found'}</p>
+                <h3 style='font-family: Cairo, sans-serif;'> حاجات هتساعدك جنب الكورس:</h3>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Display additional resources
+        for resource_type in ["Books", "Podcasts"]:
+            if skill_data["resources"].get(resource_type):
+                st.markdown(
+                    f"<div style='font-family: Cairo, sans-serif; font-size: 1.2em; direction: rtl;'>- {skill_data['resources'][resource_type][0]} ({resource_type})</div>",
+                    unsafe_allow_html=True
+                )
+        
+        # Display the result code
+        st.markdown(
+            f"""
+            <div class='results-section'>
+                <h3 style='font-family: Cairo, sans-serif;'>رمز الكورس:</h3>
+                <p style='font-family: Cairo, sans-serif; font-size: 1.4em;'>{result_code}</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+# Main Application
+def main():
+    """Main function to run the Streamlit app."""
+    initialize_session_state()
+    apply_custom_styles()
+
+    # Add logo
+    st.markdown(
+        """
+        <div class="logo-container">
+            <img src="https://i.imgur.com/L5vmEv9.png" alt="App Logo">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(f"<h2 class='h2' style='text-align: center;'>Skill Path Assessment</h2>", unsafe_allow_html=True)
+    st.markdown("<p class='subtitle-text'> اختار الاجابات اللى تعبر عنك فى كل سؤال عشان نحدد التراك المناسب ليك  </p>", unsafe_allow_html=True)
+
+    # Add a separating line
+    st.markdown("<div class='separator'></div>", unsafe_allow_html=True)
+
+    if not st.session_state['test_completed']:
+        question_keys = list(TRAIT_QUESTIONS.keys())
+        current_question_key = question_keys[st.session_state['question_index']]
+        q_data = TRAIT_QUESTIONS[current_question_key]
+
+        responses_list = display_question(q_data)
+
+        # Add "التالي" and "السابق" buttons
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            if st.button("التالي", key=f"next_button_{st.session_state['question_index']}"):
+                if responses_list:
+                    update_scores(responses_list, current_question_key)
+                    if st.session_state['question_index'] < len(TRAIT_QUESTIONS) - 1:
+                        st.session_state['question_index'] += 1
+                    else:
+                        st.session_state['test_completed'] = True
+                    st.rerun()
+                else:
+                    st.warning("برجاء اختيار إجابة واحدة على الأقل قبل المتابعة.")
+        with col2:
+            if st.session_state['question_index'] > 0:
+                if st.button("السابق", key=f"prev_button_{st.session_state['question_index']}"):
+                    st.session_state['question_index'] -= 1
+                    st.rerun()
+
+        progress_bar = st.progress((st.session_state['question_index'] + 1) / len(TRAIT_QUESTIONS))
+        st.write(f"Question {st.session_state['question_index'] + 1} of {len(TRAIT_QUESTIONS)}")
+
+    elif st.session_state['test_completed'] and not st.session_state.get('background_completed', False):
+        # Display background questions
+        st.markdown("<h2 style='text-align: center;'>أسئلة إضافية</h2>", unsafe_allow_html=True)
+        st.markdown("<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستوى الخبرة واللغة المناسبة لك.</p>", unsafe_allow_html=True)
+
+        # Ask background questions
+        for q_key, q_data in BACKGROUND_QUESTIONS.items():
+            question = q_data["question"]
+            options = q_data["options"]
+            st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
+            
+            selected_option = st.radio("", options, key=f"background_{q_key}")
+            
+            # Store the selected response in session state
+            for option, value in q_data["responses"]:
+                if option == selected_option:
+                    st.session_state[q_key.lower().replace(" ", "_")] = value
+                    break
+
+        # Add a button to submit background questions
+        if st.button("إرسال الأسئلة الإضافية"):
+            st.session_state['background_completed'] = True
+            st.rerun()
+
+    elif st.session_state.get('background_completed', False):
+        show_results()
+        st.markdown("<div class='restart-button'></div>", unsafe_allow_html=True)
+        if st.button("إعادة الاختبار"):
+            st.session_state.clear()
+            st.rerun()
+
+if __name__ == "__main__":
+    main()
