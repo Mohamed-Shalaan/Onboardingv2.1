@@ -24,132 +24,10 @@ def initialize_session_state():
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
 
-def apply_custom_styles():
-    """Apply custom CSS styles."""
-    st.markdown("""
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        html, body, [class*="st"] {
-            font-family: 'Cairo', sans-serif;
-            direction: rtl; /* Set direction to right-to-left */
-        }
-        .stRadio > label {
-            text-align: right;
-        }
-        .stRadio > div > div > div {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-        .logo-container {
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        .logo-container img {
-            max-width: 200px;
-            height: auto;
-        }
-        .question-text {
-            font-size: 1.5em; /* Slightly smaller font size for questions */
-            font-weight: bold;
-            color: #2c3e50; /* Dark blue color */
-            margin-bottom: 20px; /* Add more space below the question */
-            text-align: right; /* Align text to the right */
-        }
-        .level-question-text {
-            font-size: 1.4em; /* Smaller font size for level questions */
-            font-weight: bold;
-            color: #2c3e50; /* Dark blue color */
-            margin-bottom: 15px; /* Add more space below the question */
-            text-align: right; /* Align text to the right */
-        }
-        .option-text {
-            font-size: 1.2em; /* Larger font size for options */
-            text-align: right; /* Align text to the right */
-        }
-        h2 {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-family: 'Cairo', sans-serif;
-        }
-        h3 {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-family: 'Cairo', sans-serif;
-            color: Tomato; /* Tomato color for track name */
-        }
-        .option-button {
-            display: block;
-            margin: 5px auto;
-            padding: 2px 2px;
-            border: 2px solid #f1c40f;
-            border-radius: 5px;
-            background-color: white;
-            color: black;
-            cursor: pointer;
-            text-align: right;
-        }
-        /* Larger font size for checkbox options */
-        div.stCheckbox > label {
-            text-align: right;
-            font-size: 1.3em; /* Increased font size */
-            padding: 4px 0; /* Reverted padding to original state */
-        }
-        div.stCheckbox > div > div > div {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-        div.stCheckbox > div > div > div > div:nth-child(1) {
-            margin-left: 20px;
-        }
-        /* Style the buttons */
-        .stButton > button {
-            font-family: 'Cairo', sans-serif;
-            font-size: 1.3em; /* Larger font size for buttons */
-            font-weight: bold; /* Bold text for buttons */
-            background-color: #f1c40f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            margin: 10px auto;
-            width: 150px; /* Fixed width for both buttons */
-            display: block;
-        }
-        /* Change hover color of the buttons */
-        .stButton > button:hover {
-            color: black !important;
-        }
-        /* Center the buttons */
-        .stButton {
-            text-align: center;
-        }
-        /* Add margin to the "إعادة الاختبار" button */
-        .restart-button {
-            margin-top: 30px;
-        }
-        /* Add a separating line */
-        .separator {
-            border-top: 2px solid #f1c40f;
-            margin: 20px 0;
-        }
-        /* Style for the subtitle */
-        .subtitle-text {
-            font-size: 1.3em; /* Larger font size for subtitle */
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        /* Add space between recommended track text and results */
-        .results-section {
-            margin-top: 20px;
-        }
-        /* Larger text for blue-highlighted sections */
-        .results-section h3, .results-section p {
-            font-size: 1.4em; /* Larger font size */
-        }
-        </style>
-    """, unsafe_allow_html=True)
+def load_custom_styles():
+    """Load custom CSS styles from an external file."""
+    with open('styles.css', 'r', encoding='utf-8') as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 def display_question(q_data):
     """Display the current question and options."""
@@ -168,30 +46,17 @@ def display_question(q_data):
 def update_scores(responses_list, current_question_key):
     """Update scores based on user responses."""
     weight = TRAIT_QUESTIONS[current_question_key].get("weight", 1)
-    st.write(f"Updating scores with weight: {weight}")
-    st.write(f"Current scores: {st.session_state['score']}")
-    st.write(f"Responses list: {responses_list}")
-    
     for _, skill in responses_list:
         if skill in st.session_state['score']:
             st.session_state['score'][skill] += weight
-        else:
-            st.warning(f"Skill '{skill}' not found in scores. Skipping update.")
 
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
-    # Generate 3-letter abbreviation for the track
     track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
-    
-    # Map level to a numeric value
     level_mapping = {"Beginner": "1", "Intermediate": "2", "Advanced": "3"}
     level_code = level_mapping.get(level, "0")  # Default to "0" if level is not found
-    
-    # Map language to a letter
     language_mapping = {"Arabic": "A", "English": "E"}
     language_code = language_mapping.get(language, "U")  # Default to "U" (Unknown) if language is not found
-    
-    # Combine all parts into the result code
     result_code = f"{track_abbr}{level_code}{language_code}"
     return result_code
 
@@ -250,7 +115,7 @@ def show_results():
 def main():
     """Main function to run the Streamlit app."""
     initialize_session_state()
-    apply_custom_styles()
+    load_custom_styles()
 
     # Add logo
     st.markdown(
@@ -300,7 +165,7 @@ def main():
         # Update progress bar
         progress = (st.session_state['question_index'] + 1) / total_questions
         st.progress(progress)
-        st.write(f"Question {st.session_state['question_index'] + 1} of {total_questions}")
+        st.markdown(f"<div class='progress-text'>Question {st.session_state['question_index'] + 1} of {total_questions}</div>", unsafe_allow_html=True)
 
     elif st.session_state['test_completed'] and not st.session_state.get('level_determined', False):
         # Determine the fitting track
@@ -330,7 +195,6 @@ def main():
 
         # Calculate the final level based on responses
         if level_responses:
-            # Assign weights to responses (Beginner: 1, Intermediate: 2, Advanced: 3)
             level_scores = {"Beginner": 1, "Intermediate": 2, "Advanced": 3}
             total_score = sum(level_scores[response] for response in level_responses)
             average_score = total_score / len(level_responses)
@@ -357,3 +221,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Version: 1.1 - Optimized CSS loading, added progress indicator, enforced response selection, improved level determination logic.

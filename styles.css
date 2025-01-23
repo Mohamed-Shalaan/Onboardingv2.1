@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+html, body, [class*="st"] {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl; /* Set direction to right-to-left */
+}
+
+.stRadio > label {
+    text-align: right;
+}
+
+.stRadio > div > div > div {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.logo-container {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.logo-container img {
+    max-width: 200px;
+    height: auto;
+}
+
+.question-text {
+    font-size: 1.5em; /* Slightly smaller font size for questions */
+    font-weight: bold;
+    color: #2c3e50; /* Dark blue color */
+    margin-bottom: 20px; /* Add more space below the question */
+    text-align: right; /* Align text to the right */
+}
+
+.level-question-text {
+    font-size: 1.4em; /* Smaller font size for level questions */
+    font-weight: bold;
+    color: #2c3e50; /* Dark blue color */
+    margin-bottom: 15px; /* Add more space below the question */
+    text-align: right; /* Align text to the right */
+}
+
+.option-text {
+    font-size: 1.2em; /* Larger font size for options */
+    text-align: right; /* Align text to the right */
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Cairo', sans-serif;
+}
+
+h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-family: 'Cairo', sans-serif;
+    color: Tomato; /* Tomato color for track name */
+}
+
+.option-button {
+    display: block;
+    margin: 5px auto;
+    padding: 2px 2px;
+    border: 2px solid #f1c40f;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    text-align: right;
+}
+
+/* Larger font size for checkbox options */
+div.stCheckbox > label {
+    text-align: right;
+    font-size: 1.3em; /* Increased font size */
+    padding: 4px 0; /* Reverted padding to original state */
+}
+
+div.stCheckbox > div > div > div {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+div.stCheckbox > div > div > div > div:nth-child(1) {
+    margin-left: 20px;
+}
+
+/* Style the buttons */
+.stButton > button {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.3em; /* Larger font size for buttons */
+    font-weight: bold; /* Bold text for buttons */
+    background-color: #f1c40f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    width: 150px; /* Fixed width for both buttons */
+    display: block;
+}
+
+/* Change hover color of the buttons */
+.stButton > button:hover {
+    color: black !important;
+}
+
+/* Center the buttons */
+.stButton {
+    text-align: center;
+}
+
+/* Add margin to the "إعادة الاختبار" button */
+.restart-button {
+    margin-top: 30px;
+}
+
+/* Add a separating line */
+.separator {
+    border-top: 2px solid #f1c40f;
+    margin: 20px 0;
+}
+
+/* Style for the subtitle */
+.subtitle-text {
+    font-size: 1.3em; /* Larger font size for subtitle */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Add space between recommended track text and results */
+.results-section {
+    margin-top: 20px;
+}
+
+/* Larger text for blue-highlighted sections */
+.results-section h3, .results-section p {
+    font-size: 1.4em; /* Larger font size */
+}
+
+/* Progress text styling */
+.progress-text {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 10px;
+    color: #2c3e50;
+}

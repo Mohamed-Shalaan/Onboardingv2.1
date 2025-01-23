@@ -123,40 +123,40 @@
     "Work Nature": {
       "question": "ما هو طبيعة العمل التي تفضلها؟",
       "options": [
-        "مواعيد منتظمة",
-        "عندما أرغب بذلك",
-        "مزيج من الاثنين"
+        "&nbsp;&nbsp; مواعيد منتظمة",
+        "&nbsp;&nbsp; عندما أرغب بذلك",
+        "&nbsp;&nbsp; مزيج من الاثنين"
       ],
       "responses": [
-        ["مواعيد منتظمة", "Structured"],
-        ["عندما أرغب بذلك", "Flexible"],
-        ["مزيج من الاثنين", "Mixed"]
+        ["&nbsp;&nbsp; مواعيد منتظمة", "Structured"],
+        ["&nbsp;&nbsp; عندما أرغب بذلك", "Flexible"],
+        ["&nbsp;&nbsp; مزيج من الاثنين", "Mixed"]
       ],
       "weight": 2
     },
     "Language": {
       "question": "ما هي اللغة التي تفضل التعلم بها؟",
       "options": [
-        "العربية",
-        "الإنجليزية"
+        "&nbsp;&nbsp; العربية",
+        "&nbsp;&nbsp; الإنجليزية"
       ],
       "responses": [
-        ["العربية", "Arabic"],
-        ["الإنجليزية", "English"]
+        ["&nbsp;&nbsp; العربية", "Arabic"],
+        ["&nbsp;&nbsp; الإنجليزية", "English"]
       ],
       "weight": 1
     },
     "Language Usage": {
       "question": "كم مرة تستخدم اللغة المختارة في عملك اليومي؟",
       "options": [
-        "نادرًا",
-        "أحيانًا",
-        "دائمًا"
+        "&nbsp;&nbsp; نادرًا",
+        "&nbsp;&nbsp; أحيانًا",
+        "&nbsp;&nbsp; دائمًا"
       ],
       "responses": [
-        ["نادرًا", "Basic"],
-        ["أحيانًا", "Intermediate"],
-        ["دائمًا", "Fluent"]
+        ["&nbsp;&nbsp; نادرًا", "Basic"],
+        ["&nbsp;&nbsp; أحيانًا", "Intermediate"],
+        ["&nbsp;&nbsp; دائمًا", "Fluent"]
       ],
       "weight": 1
     }
@@ -165,66 +165,66 @@
     "Experience": {
       "question": "كم سنة من الخبرة لديك في مجال [Track Name]؟",
       "options": [
-        "أقل من سنة",
-        "من سنة إلى 3 سنوات",
-        "أكثر من 3 سنوات"
+        "&nbsp;&nbsp; أقل من سنة",
+        "&nbsp;&nbsp; من سنة إلى 3 سنوات",
+        "&nbsp;&nbsp; أكثر من 3 سنوات"
       ],
       "responses": [
-        ["أقل من سنة", "Beginner"],
-        ["من سنة إلى 3 سنوات", "Intermediate"],
-        ["أكثر من 3 سنوات", "Advanced"]
+        ["&nbsp;&nbsp; أقل من سنة", "Beginner"],
+        ["&nbsp;&nbsp; من سنة إلى 3 سنوات", "Intermediate"],
+        ["&nbsp;&nbsp; أكثر من 3 سنوات", "Advanced"]
       ]
     },
     "Project Complexity": {
       "question": "ما هو مستوى تعقيد المشاريع التي عملت عليها في مجال [Track Name]؟",
       "options": [
-        "مشاريع بسيطة",
-        "مشاريع متوسطة التعقيد",
-        "مشاريع معقدة للغاية"
+        "&nbsp;&nbsp; مشاريع بسيطة",
+        "&nbsp;&nbsp; مشاريع متوسطة التعقيد",
+        "&nbsp;&nbsp; مشاريع معقدة للغاية"
       ],
       "responses": [
-        ["مشاريع بسيطة", "Beginner"],
-        ["مشاريع متوسطة التعقيد", "Intermediate"],
-        ["مشاريع معقدة للغاية", "Advanced"]
+        ["&nbsp;&nbsp; مشاريع بسيطة", "Beginner"],
+        ["&nbsp;&nbsp; مشاريع متوسطة التعقيد", "Intermediate"],
+        ["&nbsp;&nbsp; مشاريع معقدة للغاية", "Advanced"]
       ]
     },
     "Problem-Solving": {
       "question": "كيف تصف قدرتك على حل المشكلات في مجال [Track Name]؟",
       "options": [
-        "أحتاج إلى مساعدة في معظم الأحيان",
-        "أستطيع حل معظم المشكلات بمفردي",
-        "أستطيع حل المشكلات المعقدة بسهولة"
+        "&nbsp;&nbsp; أحتاج إلى مساعدة في معظم الأحيان",
+        "&nbsp;&nbsp; أستطيع حل معظم المشكلات بمفردي",
+        "&nbsp;&nbsp; أستطيع حل المشكلات المعقدة بسهولة"
       ],
       "responses": [
-        ["أحتاج إلى مساعدة في معظم الأحيان", "Beginner"],
-        ["أستطيع حل معظم المشكلات بمفردي", "Intermediate"],
-        ["أستطيع حل المشكلات المعقدة بسهولة", "Advanced"]
+        ["&nbsp;&nbsp; أحتاج إلى مساعدة في معظم الأحيان", "Beginner"],
+        ["&nbsp;&nbsp; أستطيع حل معظم المشكلات بمفردي", "Intermediate"],
+        ["&nbsp;&nbsp; أستطيع حل المشكلات المعقدة بسهولة", "Advanced"]
       ]
     },
     "Tools Familiarity": {
       "question": "ما هو مستوى إلمامك بالأدوات والتقنيات المستخدمة في مجال [Track Name]؟",
       "options": [
-        "لدي معرفة أساسية فقط",
-        "لدي معرفة جيدة بمعظم الأدوات",
-        "لدي معرفة متقدمة بجميع الأدوات"
+        "&nbsp;&nbsp; لدي معرفة أساسية فقط",
+        "&nbsp;&nbsp; لدي معرفة جيدة بمعظم الأدوات",
+        "&nbsp;&nbsp; لدي معرفة متقدمة بجميع الأدوات"
       ],
       "responses": [
-        ["لدي معرفة أساسية فقط", "Beginner"],
-        ["لدي معرفة جيدة بمعظم الأدوات", "Intermediate"],
-        ["لدي معرفة متقدمة بجميع الأدوات", "Advanced"]
+        ["&nbsp;&nbsp; لدي معرفة أساسية فقط", "Beginner"],
+        ["&nbsp;&nbsp; لدي معرفة جيدة بمعظم الأدوات", "Intermediate"],
+        ["&nbsp;&nbsp; لدي معرفة متقدمة بجميع الأدوات", "Advanced"]
       ]
     },
     "Mentoring Ability": {
       "question": "هل يمكنك تدريب أو إرشاد الآخرين في مجال [Track Name]؟",
       "options": [
-        "لا، ما زلت أتعلم",
-        "نعم، يمكنني مساعدة المبتدئين",
-        "نعم، يمكنني تدريب الآخرين باحترافية"
+        "&nbsp;&nbsp; لا، ما زلت أتعلم",
+        "&nbsp;&nbsp; نعم، يمكنني مساعدة المبتدئين",
+        "&nbsp;&nbsp; نعم، يمكنني تدريب الآخرين باحترافية"
       ],
       "responses": [
-        ["لا، ما زلت أتعلم", "Beginner"],
-        ["نعم، يمكنني مساعدة المبتدئين", "Intermediate"],
-        ["نعم، يمكنني تدريب الآخرين باحترافية", "Advanced"]
+        ["&nbsp;&nbsp; لا، ما زلت أتعلم", "Beginner"],
+        ["&nbsp;&nbsp; نعم، يمكنني مساعدة المبتدئين", "Intermediate"],
+        ["&nbsp;&nbsp; نعم، يمكنني تدريب الآخرين باحترافية", "Advanced"]
       ]
     }
   },
@@ -236,15 +236,51 @@
       "language": "English"
     },
     {
+      "name": "Sales Mastery Bootcamp (Arabic)",
+      "track": "Sales",
+      "level": "Beginner",
+      "language": "Arabic"
+    },
+    {
+      "name": "Advanced Sales Strategies",
+      "track": "Sales",
+      "level": "Advanced",
+      "language": "English"
+    },
+    {
       "name": "Digital Marketing Fundamentals",
       "track": "Marketing",
       "level": "Beginner",
       "language": "Arabic"
     },
     {
+      "name": "Digital Marketing Fundamentals (English)",
+      "track": "Marketing",
+      "level": "Beginner",
+      "language": "English"
+    },
+    {
+      "name": "Advanced Marketing Techniques",
+      "track": "Marketing",
+      "level": "Advanced",
+      "language": "English"
+    },
+    {
       "name": "Content Strategy for Professionals",
       "track": "Content Creation",
       "level": "Intermediate",
+      "language": "English"
+    },
+    {
+      "name": "Content Strategy for Professionals (Arabic)",
+      "track": "Content Creation",
+      "level": "Intermediate",
+      "language": "Arabic"
+    },
+    {
+      "name": "Advanced Content Creation",
+      "track": "Content Creation",
+      "level": "Advanced",
       "language": "English"
     },
     {
@@ -254,9 +290,33 @@
       "language": "Arabic"
     },
     {
+      "name": "Graphic Design Masterclass (English)",
+      "track": "Design & Editing",
+      "level": "Advanced",
+      "language": "English"
+    },
+    {
+      "name": "Introduction to Graphic Design",
+      "track": "Design & Editing",
+      "level": "Beginner",
+      "language": "Arabic"
+    },
+    {
       "name": "Full-Stack Web Development",
       "track": "Web & Programming",
       "level": "Intermediate",
+      "language": "English"
+    },
+    {
+      "name": "Full-Stack Web Development (Arabic)",
+      "track": "Web & Programming",
+      "level": "Intermediate",
+      "language": "Arabic"
+    },
+    {
+      "name": "Advanced Web Development",
+      "track": "Web & Programming",
+      "level": "Advanced",
       "language": "English"
     }
   ]
