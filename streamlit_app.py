@@ -23,9 +23,6 @@ def initialize_session_state():
         st.session_state['background_completed'] = False
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
-        st.session_state['work_nature'] = None  # Initialize work_nature
-        st.session_state['language_preference'] = None  # Initialize language_preference
-        st.session_state['language_usage'] = None  # Initialize language_usage
 
 def apply_custom_styles():
     """Apply custom CSS styles."""
@@ -260,7 +257,7 @@ def main():
     st.markdown("<div class='separator'></div>", unsafe_allow_html=True)
 
     # Calculate total number of questions (trait + background)
-    total_questions = len(TRAIT_QUESTIONS) + 2  # 2 additional questions for work nature and language
+    total_questions = len(TRAIT_QUESTIONS)
 
     if not st.session_state['test_completed']:
         # Display trait questions
@@ -294,55 +291,7 @@ def main():
         st.progress(progress)
         st.write(f"Question {st.session_state['question_index'] + 1} of {total_questions}")
 
-    elif st.session_state['test_completed'] and not st.session_state.get('background_completed', False):
-        # Display work nature question
-        st.markdown("<h2 style='text-align: center;'>أسئلة إضافية</h2>", unsafe_allow_html=True)
-        st.markdown("<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستوى الخبرة واللغة المناسبة لك.</p>", unsafe_allow_html=True)
-
-        # Ask work nature question
-        work_nature_data = TRAIT_QUESTIONS["Work Nature"]
-        question = work_nature_data["question"]
-        options = work_nature_data["options"]
-        st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
-        
-        selected_option = st.radio("", options, key="work_nature")
-        
-        # Store the selected response in session state
-        if selected_option:
-            for option, value in work_nature_data["responses"]:
-                if option == selected_option:
-                    st.session_state['work_nature'] = value
-                    break
-
-        # Ask language preference and usage questions
-        language_data = TRAIT_QUESTIONS["Language"]
-        language_usage_data = TRAIT_QUESTIONS["Language Usage"]
-
-        st.markdown(f"<div class='question-text'>{language_data['question']}</div>", unsafe_allow_html=True)
-        selected_language = st.radio("", language_data["options"], key="language_preference")
-        
-        st.markdown(f"<div class='question-text'>{language_usage_data['question']}</div>", unsafe_allow_html=True)
-        selected_language_usage = st.radio("", language_usage_data["options"], key="language_usage")
-
-        # Store the selected responses in session state
-        if selected_language:
-            for option, value in language_data["responses"]:
-                if option == selected_language:
-                    st.session_state['language'] = value
-                    break
-
-        if selected_language_usage:
-            for option, value in language_usage_data["responses"]:
-                if option == selected_language_usage:
-                    st.session_state['language_usage'] = value
-                    break
-
-        # Add a button to submit background questions
-        if st.button("إرسال الأسئلة الإضافية"):
-            st.session_state['background_completed'] = True
-            st.rerun()
-
-    elif st.session_state.get('background_completed', False) and not st.session_state.get('level_determined', False):
+    elif st.session_state['test_completed'] and not st.session_state.get('level_determined', False):
         # Determine the fitting track
         ranked_skills = sorted(st.session_state['score'].items(), key=lambda item: item[1], reverse=True)
         if ranked_skills:
