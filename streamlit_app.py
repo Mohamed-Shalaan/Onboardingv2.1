@@ -157,8 +157,15 @@ def display_question(q_data):
 def update_scores(responses_list, current_question_key):
     """Update scores based on user responses."""
     weight = TRAIT_QUESTIONS[current_question_key].get("weight", 1)
+    st.write(f"Updating scores with weight: {weight}")
+    st.write(f"Current scores: {st.session_state['score']}")
+    st.write(f"Responses list: {responses_list}")
+    
     for _, skill in responses_list:
-        st.session_state['score'][skill] += weight
+        if skill in st.session_state['score']:
+            st.session_state['score'][skill] += weight
+        else:
+            st.warning(f"Skill '{skill}' not found in scores. Skipping update.")
 
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
