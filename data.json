@@ -1,195 +1,263 @@
 {
-    "skills_info": {
-      "Sales": {
-        "description": "Focuses on building relationships, persuading customers, and closing deals.",
-        "resources": {
-          "Courses": ["Sales Mastery Bootcamp"],
-          "Books": ["The Psychology of Selling by Brian Tracy"],
-          "Podcasts": ["The Sales Evangelist"]
-        }
-      },
-      "Marketing": {
-        "description": "Involves market analysis, branding, and strategic promotion of products or services.",
-        "resources": {
-          "Courses": ["Digital Marketing Fundamentals"],
-          "Books": ["Contagious by Jonah Berger"],
-          "Podcasts": ["Marketing School"]
-        }
-      },
-      "Content Creation": {
-        "description": "Centers around crafting engaging stories and content across various media formats.",
-        "resources": {
-          "Courses": ["Content Strategy for Professionals"],
-          "Books": ["Everybody Writes by Ann Handley"],
-          "Podcasts": ["Content Inc."]
-        }
-      },
-      "Design & Editing": {
-        "description": "Deals with visual communication, graphics, and the aesthetics of user experience.",
-        "resources": {
-          "Courses": ["Graphic Design Masterclass"],
-          "Books": ["The Design of Everyday Things by Don Norman"],
-          "Podcasts": ["The Futur with Chris Do"]
-        }
-      },
-      "Web & Programming": {
-        "description": "Involves developing websites, software, and other digital tools using code.",
-        "resources": {
-          "Courses": ["Full-Stack Web Development"],
-          "Books": ["Eloquent JavaScript by Marijn Haverbeke"],
-          "Podcasts": ["CodeNewbie"]
-        }
+  "skills_info": {
+    "Sales": {
+      "description": "Focuses on building relationships, persuading customers, and closing deals.",
+      "resources": {
+        "Courses": ["Sales Mastery Bootcamp"],
+        "Books": ["The Psychology of Selling by Brian Tracy"],
+        "Podcasts": ["The Sales Evangelist"]
       }
     },
-    "trait_questions": {
-      "Adaptability": {
-        "question": "بتتعامل ازاى مع التحديات والمشاكل ؟",
-        "options": [
-          "&nbsp;&nbsp; بتناقش مع الناس وبنحاول نوصل لحلول مشتركة تفيد الكل",
-          "&nbsp;&nbsp; بحلل الموقف واشوف الحلول المشهورة او احاول اطلع  بحل جديد ",
-          "&nbsp;&nbsp; بكتب افكارى عن الموضوع الاول واجمعها وارتبها  وبعدين اخرج منها معلومات مفيدة ",
-          "&nbsp;&nbsp; بحب ارسم او عبرة عن المشكلة بطريقة بصرية اقدر اشاركها مع غيرى ",
-          "&nbsp;&nbsp; ممكن ادور على برنامج او اداة تساعد فى حل المشكلة او اصمم واحدة جديدة  ",
-          "&nbsp;&nbsp; بحاول أفهم وجهات نظر الناس وأشوف إزاي أقدر أعدل طريقتي علشان اوصلهم الفكرة",
-          "&nbsp;&nbsp; بحاول ألاحظ التغيرات الصغيرة وأتأقلم معاها بحيث اوصل لحل يرضى الاغلبية",
-          "&nbsp;&nbsp; بحاول أقدم كل فكرة بطريقة خفيفة وسهلة توصل للجميع ",
-          "&nbsp;&nbsp; بحاول ألعب بالتفاصيل عشان تبرز المعنى أو الفكرة بطريقة واضحة "
-        ],
-        "responses": [
-          ["&nbsp;&nbsp; بتناقش مع الناس وبنحاول نوصل لحلول مشتركة تفيد الكل", "Sales"],
-          ["&nbsp;&nbsp; بحلل الموقف واشوف الحلول المشهورة او احاول اطلع  بحل جديد ", "Marketing"],
-          ["&nbsp;&nbsp; بكتب افكارى عن الموضوع الاول واجمعها وارتبها  وبعدين اخرج منها معلومات مفيدة ", "Content Creation"],
-          ["&nbsp;&nbsp; بحب ارسم او عبرة عن المشكلة بطريقة بصرية اقدر اشاركها مع غيرى ", "Design & Editing"],
-          ["&nbsp;&nbsp; ممكن ادور على برنامج او اداة تساعد فى حل المشكلة او اصمم واحدة جديدة  ", "Web & Programming"],
-          ["&nbsp;&nbsp; بحاول أفهم وجهات نظر الناس وأشوف إزاي أقدر أعدل طريقتي علشان اوصلهم الفكرة", "Sales"],
-          ["&nbsp;&nbsp; بحاول ألاحظ التغيرات الصغيرة وأتأقلم معاها بحيث اوصل لحل يرضى الاغلبية", "Marketing"],
-          ["&nbsp;&nbsp; بحاول أقدم كل فكرة بطريقة خفيفة وسهلة توصل للجميع ", "Content Creation"],
-          ["&nbsp;&nbsp; بحاول ألعب بالتفاصيل عشان تبرز المعنى أو الفكرة بطريقة واضحة ", "Design & Editing"]
-        ],
-        "weight": 3
-      },
-      "Interests": {
-        "question": "ايه اللى بتستمتع بيه لما تكون فاضى ؟",
-        "options": [
-          "&nbsp;&nbsp; بحب أشوف فيديوهات وأتعلم منها حاجات جديدة وأفكر أضيف لمستي.",
-          "&nbsp;&nbsp; بحس إن الفن موجود في كل حاجة حوالينا، حتى لو حاجة بسيطة زي ترتيب الألوان.",
-          "&nbsp;&nbsp; بحب أتابع الجديد على السوشيال ميديا وأشوف الناس بتتكلم عن إيه.",
-          "&nbsp;&nbsp; غالبًا لما أكون فاضي، بلاقي نفسي بجرب أعمل حاجة جديدة على الكمبيوتر.",
-          "&nbsp;&nbsp; بحب أرتب الصور أو أغير شكلها عشان تطلع أحلى.",
-          "&nbsp;&nbsp; بحب أراقب الإعلانات اللي بتظهر لي وأفكر ليه عملوها بالشكل ده.",
-          "&nbsp;&nbsp; بحب أوثق اللحظات بطريقتي الخاصة سواء بالكتابة أو التصوير.",
-          "&nbsp;&nbsp; بحب أتعلم حاجات جديدة على الإنترنت، خاصة لما يكون فيها تحدي."
-        ],
-        "responses": [
-          ["&nbsp;&nbsp; بحب أشوف فيديوهات وأتعلم منها حاجات جديدة وأفكر أضيف لمستي.", "Content Creation"],
-          ["&nbsp;&nbsp; بحس إن الفن موجود في كل حاجة حوالينا، حتى لو حاجة بسيطة زي ترتيب الألوان.", "Design & Editing"],
-          ["&nbsp;&nbsp; بحب أتابع الجديد على السوشيال ميديا وأشوف الناس بتتكلم عن إيه.", "Marketing"],
-          ["&nbsp;&nbsp; غالبًا لما أكون فاضي، بلاقي نفسي بجرب أعمل حاجة جديدة على الكمبيوتر.", "Web & Programming"],
-          ["&nbsp;&nbsp; بحب أرتب الصور أو أغير شكلها عشان تطلع أحلى.", "Design & Editing"],
-          ["&nbsp;&nbsp; بحب أراقب الإعلانات اللي بتظهر لي وأفكر ليه عملوها بالشكل ده.", "Marketing"],
-          ["&nbsp;&nbsp; بحب أوثق اللحظات بطريقتي الخاصة سواء بالكتابة أو التصوير.", "Content Creation"],
-          ["&nbsp;&nbsp; بحب أتعلم حاجات جديدة على الإنترنت، خاصة لما يكون فيها تحدي.", "Web & Programming"]
-        ],
-        "weight": 2
-      },
-      "Rewards": {
-        "question": "ايه نوع المهام اللى بتحس انك انجزت حاجة كبيرة لما بتعملها؟",
-        "options": [
-          "&nbsp;&nbsp; بحس بالإنجاز لما أطلع فكرة جديدة وألاقي الناس متفاعلة معاها.",
-          "&nbsp;&nbsp; لما أغير شكل حاجة عادية وأخليها مميزة.",
-          "&nbsp;&nbsp; بحس بالسعادة لما أقنع حد بحل يناسب احتياجاته ويريحه.",
-          "&nbsp;&nbsp; لما أصمم حاجة تساعد الناس بطريقة غير مباشرة.",
-          "&nbsp;&nbsp; لما أقدر أوصل فكرتي بشكل بسيط ومميز.",
-          "&nbsp;&nbsp; بحس بالإنجاز لما حد يقولي إن شغلي جميل او يعلق على اللمسات الفنية بتاعتي.",
-          "&nbsp;&nbsp; بحس بالسعادة لما المحتوى اللي أقدمه يضيف حاجة جديدة للناس.",
-          "&nbsp;&nbsp; لما ألاقي نفسي بحل مشكلة كنت شايفها صعبة.",
-          "&nbsp;&nbsp; لما أشرح فكرة أو منتج وألاقي حد فعلاً استفاد منها أو أخد خطوة بفضل كلامي.",
-          "&nbsp;&nbsp; لما أوصل رسالة معينة بطريقة تخليها تفضل في أذهان الناس وتعلم معاهم."
-        ],
-        "responses": [
-          ["&nbsp;&nbsp; بحس بالإنجاز لما أطلع فكرة جديدة وألاقي الناس متفاعلة معاها.", "Marketing"],
-          ["&nbsp;&nbsp; لما أغير شكل حاجة عادية وأخليها مميزة.", "Design & Editing"],
-          ["&nbsp;&nbsp; بحس بالسعادة لما أقنع حد بحل يناسب احتياجاته ويريحه.", "Sales"],
-          ["&nbsp;&nbsp; لما أصمم حاجة تساعد الناس بطريقة غير مباشرة.", "Web & Programming"],
-          ["&nbsp;&nbsp; لما أقدر أوصل فكرتي بشكل بسيط ومميز.", "Content Creation"],
-          ["&nbsp;&nbsp; بحس بالإنجاز لما حد يقولي إن شغلي جميل او يعلق على اللمسات الفنية بتاعتي.", "Design & Editing"],
-          ["&nbsp;&nbsp; بحس بالسعادة لما المحتوى اللي أقدمه يضيف حاجة جديدة للناس.", "Content Creation"],
-          ["&nbsp;&nbsp; لما ألاقي نفسي بحل مشكلة كنت شايفها صعبة.", "Web & Programming"],
-          ["&nbsp;&nbsp; لما أشرح فكرة أو منتج وألاقي حد فعلاً استفاد منها أو أخد خطوة بفضل كلامي.", "Sales"],
-          ["&nbsp;&nbsp; لما أوصل رسالة معينة بطريقة تخليها تفضل في أذهان الناس وتعلم معاهم.", "Marketing"]
-        ],
-        "weight": 3
+    "Marketing": {
+      "description": "Involves market analysis, branding, and strategic promotion of products or services.",
+      "resources": {
+        "Courses": ["Digital Marketing Fundamentals"],
+        "Books": ["Contagious by Jonah Berger"],
+        "Podcasts": ["Marketing School"]
       }
     },
-    "background_questions": {
-      "Experience": {
-        "question": "ما هو مستوى خبرتك في هذا المجال؟",
-        "options": [
-          "مبتدئ",
-          "متوسط",
-          "متقدم"
-        ],
-        "responses": [
-          ["مبتدئ", "Beginner"],
-          ["متوسط", "Intermediate"],
-          ["متقدم", "Advanced"]
-        ]
-      },
-      "Language Preference": {
-        "question": "ما هي اللغة التي تفضل التعلم بها؟",
-        "options": [
-          "العربية",
-          "الإنجليزية"
-        ],
-        "responses": [
-          ["العربية", "Arabic"],
-          ["الإنجليزية", "English"]
-        ]
-      },
-      "Language Mastery": {
-        "question": "ما هو مستوى إتقانك للغة المختارة؟",
-        "options": [
-          "مبتدئ",
-          "متوسط",
-          "فصيح"
-        ],
-        "responses": [
-          ["مبتدئ", "Basic"],
-          ["متوسط", "Intermediate"],
-          ["فصيح", "Fluent"]
-        ]
+    "Content Creation": {
+      "description": "Centers around crafting engaging stories and content across various media formats.",
+      "resources": {
+        "Courses": ["Content Strategy for Professionals"],
+        "Books": ["Everybody Writes by Ann Handley"],
+        "Podcasts": ["Content Inc."]
       }
     },
-    "courses": [
-      {
-        "name": "Sales Mastery Bootcamp",
-        "track": "Sales",
-        "level": "Beginner",
-        "language": "English"
-      },
-      {
-        "name": "Digital Marketing Fundamentals",
-        "track": "Marketing",
-        "level": "Beginner",
-        "language": "Arabic"
-      },
-      {
-        "name": "Content Strategy for Professionals",
-        "track": "Content Creation",
-        "level": "Intermediate",
-        "language": "English"
-      },
-      {
-        "name": "Graphic Design Masterclass",
-        "track": "Design & Editing",
-        "level": "Advanced",
-        "language": "Arabic"
-      },
-      {
-        "name": "Full-Stack Web Development",
-        "track": "Web & Programming",
-        "level": "Intermediate",
-        "language": "English"
+    "Design & Editing": {
+      "description": "Deals with visual communication, graphics, and the aesthetics of user experience.",
+      "resources": {
+        "Courses": ["Graphic Design Masterclass"],
+        "Books": ["The Design of Everyday Things by Don Norman"],
+        "Podcasts": ["The Futur with Chris Do"]
       }
-    ]
-  }
+    },
+    "Web & Programming": {
+      "description": "Involves developing websites, software, and other digital tools using code.",
+      "resources": {
+        "Courses": ["Full-Stack Web Development"],
+        "Books": ["Eloquent JavaScript by Marijn Haverbeke"],
+        "Podcasts": ["CodeNewbie"]
+      }
+    }
+  },
+  "trait_questions": {
+    "Adaptability": {
+      "question": "بتتعامل ازاى مع التحديات والمشاكل ؟",
+      "options": [
+        "&nbsp;&nbsp; بتناقش مع الناس وبنحاول نوصل لحلول مشتركة تفيد الكل",
+        "&nbsp;&nbsp; بحلل الموقف واشوف الحلول المشهورة او احاول اطلع  بحل جديد ",
+        "&nbsp;&nbsp; بكتب افكارى عن الموضوع الاول واجمعها وارتبها  وبعدين اخرج منها معلومات مفيدة ",
+        "&nbsp;&nbsp; بحب ارسم او عبرة عن المشكلة بطريقة بصرية اقدر اشاركها مع غيرى ",
+        "&nbsp;&nbsp; ممكن ادور على برنامج او اداة تساعد فى حل المشكلة او اصمم واحدة جديدة  ",
+        "&nbsp;&nbsp; بحاول أفهم وجهات نظر الناس وأشوف إزاي أقدر أعدل طريقتي علشان اوصلهم الفكرة",
+        "&nbsp;&nbsp; بحاول ألاحظ التغيرات الصغيرة وأتأقلم معاها بحيث اوصل لحل يرضى الاغلبية",
+        "&nbsp;&nbsp; بحاول أقدم كل فكرة بطريقة خفيفة وسهلة توصل للجميع ",
+        "&nbsp;&nbsp; بحاول ألعب بالتفاصيل عشان تبرز المعنى أو الفكرة بطريقة واضحة "
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; بتناقش مع الناس وبنحاول نوصل لحلول مشتركة تفيد الكل", "Sales"],
+        ["&nbsp;&nbsp; بحلل الموقف واشوف الحلول المشهورة او احاول اطلع  بحل جديد ", "Marketing"],
+        ["&nbsp;&nbsp; بكتب افكارى عن الموضوع الاول واجمعها وارتبها  وبعدين اخرج منها معلومات مفيدة ", "Content Creation"],
+        ["&nbsp;&nbsp; بحب ارسم او عبرة عن المشكلة بطريقة بصرية اقدر اشاركها مع غيرى ", "Design & Editing"],
+        ["&nbsp;&nbsp; ممكن ادور على برنامج او اداة تساعد فى حل المشكلة او اصمم واحدة جديدة  ", "Web & Programming"],
+        ["&nbsp;&nbsp; بحاول أفهم وجهات نظر الناس وأشوف إزاي أقدر أعدل طريقتي علشان اوصلهم الفكرة", "Sales"],
+        ["&nbsp;&nbsp; بحاول ألاحظ التغيرات الصغيرة وأتأقلم معاها بحيث اوصل لحل يرضى الاغلبية", "Marketing"],
+        ["&nbsp;&nbsp; بحاول أقدم كل فكرة بطريقة خفيفة وسهلة توصل للجميع ", "Content Creation"],
+        ["&nbsp;&nbsp; بحاول ألعب بالتفاصيل عشان تبرز المعنى أو الفكرة بطريقة واضحة ", "Design & Editing"]
+      ],
+      "weight": 3
+    },
+    "Interests": {
+      "question": "ايه اللى بتستمتع بيه لما تكون فاضى ؟",
+      "options": [
+        "&nbsp;&nbsp; بحب أشوف فيديوهات وأتعلم منها حاجات جديدة وأفكر أضيف لمستي.",
+        "&nbsp;&nbsp; بحس إن الفن موجود في كل حاجة حوالينا، حتى لو حاجة بسيطة زي ترتيب الألوان.",
+        "&nbsp;&nbsp; بحب أتابع الجديد على السوشيال ميديا وأشوف الناس بتتكلم عن إيه.",
+        "&nbsp;&nbsp; غالبًا لما أكون فاضي، بلاقي نفسي بجرب أعمل حاجة جديدة على الكمبيوتر.",
+        "&nbsp;&nbsp; بحب أرتب الصور أو أغير شكلها عشان تطلع أحلى.",
+        "&nbsp;&nbsp; بحب أراقب الإعلانات اللي بتظهر لي وأفكر ليه عملوها بالشكل ده.",
+        "&nbsp;&nbsp; بحب أوثق اللحظات بطريقتي الخاصة سواء بالكتابة أو التصوير.",
+        "&nbsp;&nbsp; بحب أتعلم حاجات جديدة على الإنترنت، خاصة لما يكون فيها تحدي."
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; بحب أشوف فيديوهات وأتعلم منها حاجات جديدة وأفكر أضيف لمستي.", "Content Creation"],
+        ["&nbsp;&nbsp; بحس إن الفن موجود في كل حاجة حوالينا، حتى لو حاجة بسيطة زي ترتيب الألوان.", "Design & Editing"],
+        ["&nbsp;&nbsp; بحب أتابع الجديد على السوشيال ميديا وأشوف الناس بتتكلم عن إيه.", "Marketing"],
+        ["&nbsp;&nbsp; غالبًا لما أكون فاضي، بلاقي نفسي بجرب أعمل حاجة جديدة على الكمبيوتر.", "Web & Programming"],
+        ["&nbsp;&nbsp; بحب أرتب الصور أو أغير شكلها عشان تطلع أحلى.", "Design & Editing"],
+        ["&nbsp;&nbsp; بحب أراقب الإعلانات اللي بتظهر لي وأفكر ليه عملوها بالشكل ده.", "Marketing"],
+        ["&nbsp;&nbsp; بحب أوثق اللحظات بطريقتي الخاصة سواء بالكتابة أو التصوير.", "Content Creation"],
+        ["&nbsp;&nbsp; بحب أتعلم حاجات جديدة على الإنترنت، خاصة لما يكون فيها تحدي.", "Web & Programming"]
+      ],
+      "weight": 2
+    },
+    "Rewards": {
+      "question": "ايه نوع المهام اللى بتحس انك انجزت حاجة كبيرة لما بتعملها؟",
+      "options": [
+        "&nbsp;&nbsp; بحس بالإنجاز لما أطلع فكرة جديدة وألاقي الناس متفاعلة معاها.",
+        "&nbsp;&nbsp; لما أغير شكل حاجة عادية وأخليها مميزة.",
+        "&nbsp;&nbsp; بحس بالسعادة لما أقنع حد بحل يناسب احتياجاته ويريحه.",
+        "&nbsp;&nbsp; لما أصمم حاجة تساعد الناس بطريقة غير مباشرة.",
+        "&nbsp;&nbsp; لما أقدر أوصل فكرتي بشكل بسيط ومميز.",
+        "&nbsp;&nbsp; بحس بالإنجاز لما حد يقولي إن شغلي جميل او يعلق على اللمسات الفنية بتاعتي.",
+        "&nbsp;&nbsp; بحس بالسعادة لما المحتوى اللي أقدمه يضيف حاجة جديدة للناس.",
+        "&nbsp;&nbsp; لما ألاقي نفسي بحل مشكلة كنت شايفها صعبة.",
+        "&nbsp;&nbsp; لما أشرح فكرة أو منتج وألاقي حد فعلاً استفاد منها أو أخد خطوة بفضل كلامي.",
+        "&nbsp;&nbsp; لما أوصل رسالة معينة بطريقة تخليها تفضل في أذهان الناس وتعلم معاهم."
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; بحس بالإنجاز لما أطلع فكرة جديدة وألاقي الناس متفاعلة معاها.", "Marketing"],
+        ["&nbsp;&nbsp; لما أغير شكل حاجة عادية وأخليها مميزة.", "Design & Editing"],
+        ["&nbsp;&nbsp; بحس بالسعادة لما أقنع حد بحل يناسب احتياجاته ويريحه.", "Sales"],
+        ["&nbsp;&nbsp; لما أصمم حاجة تساعد الناس بطريقة غير مباشرة.", "Web & Programming"],
+        ["&nbsp;&nbsp; لما أقدر أوصل فكرتي بشكل بسيط ومميز.", "Content Creation"],
+        ["&nbsp;&nbsp; بحس بالإنجاز لما حد يقولي إن شغلي جميل او يعلق على اللمسات الفنية بتاعتي.", "Design & Editing"],
+        ["&nbsp;&nbsp; بحس بالسعادة لما المحتوى اللي أقدمه يضيف حاجة جديدة للناس.", "Content Creation"],
+        ["&nbsp;&nbsp; لما ألاقي نفسي بحل مشكلة كنت شايفها صعبة.", "Web & Programming"],
+        ["&nbsp;&nbsp; لما أشرح فكرة أو منتج وألاقي حد فعلاً استفاد منها أو أخد خطوة بفضل كلامي.", "Sales"],
+        ["&nbsp;&nbsp; لما أوصل رسالة معينة بطريقة تخليها تفضل في أذهان الناس وتعلم معاهم.", "Marketing"]
+      ],
+      "weight": 3
+    },
+    "Work Nature": {
+      "question": "ما هو طبيعة العمل التي تفضلها؟",
+      "options": [
+        "مواعيد منتظمة",
+        "عندما أرغب بذلك",
+        "مزيج من الاثنين"
+      ],
+      "responses": [
+        ["مواعيد منتظمة", "Structured"],
+        ["عندما أرغب بذلك", "Flexible"],
+        ["مزيج من الاثنين", "Mixed"]
+      ],
+      "weight": 2
+    },
+    "Language": {
+      "question": "ما هي اللغة التي تفضل التعلم بها؟",
+      "options": [
+        "العربية",
+        "الإنجليزية"
+      ],
+      "responses": [
+        ["العربية", "Arabic"],
+        ["الإنجليزية", "English"]
+      ],
+      "weight": 1
+    },
+    "Language Usage": {
+      "question": "كم مرة تستخدم اللغة المختارة في عملك اليومي؟",
+      "options": [
+        "نادرًا",
+        "أحيانًا",
+        "دائمًا"
+      ],
+      "responses": [
+        ["نادرًا", "Basic"],
+        ["أحيانًا", "Intermediate"],
+        ["دائمًا", "Fluent"]
+      ],
+      "weight": 1
+    }
+  },
+  "level_questions": {
+    "Experience": {
+      "question": "كم سنة من الخبرة لديك في مجال [Track Name]؟",
+      "options": [
+        "أقل من سنة",
+        "من سنة إلى 3 سنوات",
+        "أكثر من 3 سنوات"
+      ],
+      "responses": [
+        ["أقل من سنة", "Beginner"],
+        ["من سنة إلى 3 سنوات", "Intermediate"],
+        ["أكثر من 3 سنوات", "Advanced"]
+      ]
+    },
+    "Project Complexity": {
+      "question": "ما هو مستوى تعقيد المشاريع التي عملت عليها في مجال [Track Name]؟",
+      "options": [
+        "مشاريع بسيطة",
+        "مشاريع متوسطة التعقيد",
+        "مشاريع معقدة للغاية"
+      ],
+      "responses": [
+        ["مشاريع بسيطة", "Beginner"],
+        ["مشاريع متوسطة التعقيد", "Intermediate"],
+        ["مشاريع معقدة للغاية", "Advanced"]
+      ]
+    },
+    "Problem-Solving": {
+      "question": "كيف تصف قدرتك على حل المشكلات في مجال [Track Name]؟",
+      "options": [
+        "أحتاج إلى مساعدة في معظم الأحيان",
+        "أستطيع حل معظم المشكلات بمفردي",
+        "أستطيع حل المشكلات المعقدة بسهولة"
+      ],
+      "responses": [
+        ["أحتاج إلى مساعدة في معظم الأحيان", "Beginner"],
+        ["أستطيع حل معظم المشكلات بمفردي", "Intermediate"],
+        ["أستطيع حل المشكلات المعقدة بسهولة", "Advanced"]
+      ]
+    },
+    "Tools Familiarity": {
+      "question": "ما هو مستوى إلمامك بالأدوات والتقنيات المستخدمة في مجال [Track Name]؟",
+      "options": [
+        "لدي معرفة أساسية فقط",
+        "لدي معرفة جيدة بمعظم الأدوات",
+        "لدي معرفة متقدمة بجميع الأدوات"
+      ],
+      "responses": [
+        ["لدي معرفة أساسية فقط", "Beginner"],
+        ["لدي معرفة جيدة بمعظم الأدوات", "Intermediate"],
+        ["لدي معرفة متقدمة بجميع الأدوات", "Advanced"]
+      ]
+    },
+    "Mentoring Ability": {
+      "question": "هل يمكنك تدريب أو إرشاد الآخرين في مجال [Track Name]؟",
+      "options": [
+        "لا، ما زلت أتعلم",
+        "نعم، يمكنني مساعدة المبتدئين",
+        "نعم، يمكنني تدريب الآخرين باحترافية"
+      ],
+      "responses": [
+        ["لا، ما زلت أتعلم", "Beginner"],
+        ["نعم، يمكنني مساعدة المبتدئين", "Intermediate"],
+        ["نعم، يمكنني تدريب الآخرين باحترافية", "Advanced"]
+      ]
+    }
+  },
+  "courses": [
+    {
+      "name": "Sales Mastery Bootcamp",
+      "track": "Sales",
+      "level": "Beginner",
+      "language": "English"
+    },
+    {
+      "name": "Digital Marketing Fundamentals",
+      "track": "Marketing",
+      "level": "Beginner",
+      "language": "Arabic"
+    },
+    {
+      "name": "Content Strategy for Professionals",
+      "track": "Content Creation",
+      "level": "Intermediate",
+      "language": "English"
+    },
+    {
+      "name": "Graphic Design Masterclass",
+      "track": "Design & Editing",
+      "level": "Advanced",
+      "language": "Arabic"
+    },
+    {
+      "name": "Full-Stack Web Development",
+      "track": "Web & Programming",
+      "level": "Intermediate",
+      "language": "English"
+    }
+  ]
+}

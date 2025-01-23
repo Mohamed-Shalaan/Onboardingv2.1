@@ -7,7 +7,7 @@ with open('data.json', 'r', encoding='utf-8') as f:
 
 SKILLS_INFO = data["skills_info"]
 TRAIT_QUESTIONS = data["trait_questions"]
-BACKGROUND_QUESTIONS = data["background_questions"]
+LEVEL_QUESTIONS = data["level_questions"]
 COURSES = data["courses"]
 
 # Helper Functions
@@ -21,6 +21,8 @@ def initialize_session_state():
         st.session_state['level'] = "Beginner"  # Default level
         st.session_state['language'] = "Arabic"  # Default language
         st.session_state['background_completed'] = False
+        st.session_state['level_determined'] = False
+        st.session_state['recommended_track'] = None
 
 def apply_custom_styles():
     """Apply custom CSS styles."""
@@ -247,7 +249,11 @@ def main():
     # Add a separating line
     st.markdown("<div class='separator'></div>", unsafe_allow_html=True)
 
+    # Calculate total number of questions (trait + background)
+    total_questions = len(TRAIT_QUESTIONS) + 2  # 2 additional questions for work nature and language
+
     if not st.session_state['test_completed']:
+        # Display trait questions
         question_keys = list(TRAIT_QUESTIONS.keys())
         current_question_key = question_keys[st.session_state['question_index']]
         q_data = TRAIT_QUESTIONS[current_question_key]
@@ -273,34 +279,103 @@ def main():
                     st.session_state['question_index'] -= 1
                     st.rerun()
 
-        progress_bar = st.progress((st.session_state['question_index'] + 1) / len(TRAIT_QUESTIONS))
-        st.write(f"Question {st.session_state['question_index'] + 1} of {len(TRAIT_QUESTIONS)}")
+        # Update progress bar
+        progress = (st.session_state['question_index'] + 1) / total_questions
+        st.progress(progress)
+        st.write(f"Question {st.session_state['question_index'] + 1} of {total_questions}")
 
     elif st.session_state['test_completed'] and not st.session_state.get('background_completed', False):
-        # Display background questions
+        # Display work nature question
         st.markdown("<h2 style='text-align: center;'>أسئلة إضافية</h2>", unsafe_allow_html=True)
         st.markdown("<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستوى الخبرة واللغة المناسبة لك.</p>", unsafe_allow_html=True)
 
-        # Ask background questions
-        for q_key, q_data in BACKGROUND_QUESTIONS.items():
-            question = q_data["question"]
-            options = q_data["options"]
-            st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
-            
-            selected_option = st.radio("", options, key=f"background_{q_key}")
-            
-            # Store the selected response in session state
-            for option, value in q_data["responses"]:
-                if option == selected_option:
-                    st.session_state[q_key.lower().replace(" ", "_")] = value
-                    break
+        # Ask work nature question
+        work_nature_data = TRAIT_QUESTIONS["Work Nature"]
+        question = work_nature_data["question"]
+        options = work_nature_data["options"]
+        st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
+        
+        selected_option = st.radio("", options, key="work_nature")
+        
+        # Store the selected response in session state
+        for option, value in work_nature_data["responses"]:
+            if option == selected_option:
+                st.session_state['work_nature'] = value
+                break
+
+        # Ask language preference and usage questions
+        language_data = TRAIT_QUESTIONS["Language"]
+        language_usage_data = TRAIT_QUESTIONS["Language Usage"]
+
+        st.markdown(f"<div class='question-text'>{language_data['question']}</div>", unsafe_allow_html=True)
+        selected_language = st.radio("", language_data["options"], key="language_preference")
+        
+        st.markdown(f"<div class='question-text'>{language_usage_data['question']}</div>", unsafe_allow_html=True)
+        selected_language_usage = st.radio("", language_usage_data["options"], key="language_usage")
+
+        # Store the selected responses in session state
+        for option, value in language_data["responses"]:
+            if option == selected_language:
+                st.session_state['language'] = value
+                break
+
+        for option, value in language_usage_data["responses"]:
+            if option == selected_language_usage:
+                st.session_state['language_usage'] = value
+                break
 
         # Add a button to submit background questions
         if st.button("إرسال الأسئلة الإضافية"):
             st.session_state['background_completed'] = True
             st.rerun()
 
-    elif st.session_state.get('background_completed', False):
+    elif st.session_state.get('background_completed', False) and not st.session_state.get('level_determined', False):
+        # Determine the fitting track
+        ranked_skills = sorted(st.session_state['score'].items(), key=lambda item: item[1], reverse=True)
+        if ranked_skills:
+            top_skill, _ = ranked_skills[0]
+            st.session_state['recommended_track'] = top_skill
+
+        # Display level determination questions
+        st.markdown("<h2 style='text-align: center;'>تحديد المستوى</h2>", unsafe_allow_html=True)
+        st.markdown(f"<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستواك في مجال {st.session_state['recommended_track']}.</p>", unsafe_allow_html=True)
+
+        # Ask level determination questions
+        level_responses = []
+        for q_key, q_data in LEVEL_QUESTIONS.items():
+            question = q_data["question"].replace("[Track Name]", st.session_state['recommended_track'])
+            options = q_data["options"]
+            st.markdown(f"<div class='question-text'>{question}</div>", unsafe_allow_html=True)
+            
+            selected_option = st.radio("", options, key=f"level_{q_key}")
+            
+            # Store the selected response
+            for option, value in q_data["responses"]:
+                if option == selected_option:
+                    level_responses.append(value)
+                    break
+
+        # Calculate the final level based on responses
+        if level_responses:
+            # Assign weights to responses (Beginner: 1, Intermediate: 2, Advanced: 3)
+            level_scores = {"Beginner": 1, "Intermediate": 2, "Advanced": 3}
+            total_score = sum(level_scores[response] for response in level_responses)
+            average_score = total_score / len(level_responses)
+
+            # Determine the final level
+            if average_score < 1.5:
+                st.session_state['level'] = "Beginner"
+            elif average_score < 2.5:
+                st.session_state['level'] = "Intermediate"
+            else:
+                st.session_state['level'] = "Advanced"
+
+        # Add a button to submit level determination
+        if st.button("إرسال تحديد المستوى"):
+            st.session_state['level_determined'] = True
+            st.rerun()
+
+    elif st.session_state.get('level_determined', False):
         show_results()
         st.markdown("<div class='restart-button'></div>", unsafe_allow_html=True)
         if st.button("إعادة الاختبار"):
