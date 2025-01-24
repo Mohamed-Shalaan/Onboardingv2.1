@@ -160,22 +160,21 @@
       ],
       "weight": 1
     },
-    "Industry Preference": {
-      "question": "ايه المجالات اللى بتهتم بيها اكتر؟",
+    "English Proficiency": {
+      "question": "What is your English proficiency level?",
       "options": [
-        "&nbsp;&nbsp; التكنولوجيا والبرمجة",
-        "&nbsp;&nbsp; التسويق والمبيعات",
-        "&nbsp;&nbsp; التصميم والفيديو جرافيكس",
-        "&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى "
+        "&nbsp;&nbsp; C1 - Advanced",
+        "&nbsp;&nbsp; B2 - Upper Intermediate",
+        "&nbsp;&nbsp; A2 - Pre-Intermediate",
+        "&nbsp;&nbsp; A1 - Beginner"
       ],
       "responses": [
-        ["&nbsp;&nbsp; التكنولوجيا والبرمجة", "Web & Programming"],
-        ["&nbsp;&nbsp; التسويق والمبيعات", "Marketing"],
-        ["&nbsp;&nbsp; التسويق والمبيعات", "Sales"],
-        ["&nbsp;&nbsp; التصميم والفيديو جرافيكس", "Design & Editing"],
-        ["&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى ", "Content Creation"]
+        ["&nbsp;&nbsp; C1 - Advanced", "Advanced"],
+        ["&nbsp;&nbsp; B2 - Upper Intermediate", "Intermediate"],
+        ["&nbsp;&nbsp; A2 - Pre-Intermediate", "Basic"],
+        ["&nbsp;&nbsp; A1 - Beginner", "Basic"]
       ],
-      "weight": 2
+      "weight": 1
     }
   },
   "level_questions": {

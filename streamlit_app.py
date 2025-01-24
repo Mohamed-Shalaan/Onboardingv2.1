@@ -23,6 +23,7 @@ def initialize_session_state():
         st.session_state['background_completed'] = False
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
+        st.session_state['english_proficiency'] = None  # Track English proficiency
 
 def load_custom_styles():
     """Load custom CSS styles from an external file."""
@@ -60,6 +61,13 @@ def update_scores(responses_list, current_question_key):
         if skill in st.session_state['score']:
             st.session_state['score'][skill] += weight
 
+def determine_language():
+    """Determine the user's preferred language based on their choices."""
+    if st.session_state.get('language') == "English":
+        if st.session_state.get('english_proficiency') in ["Advanced", "Intermediate"]:
+            return "English"
+    return "Arabic"
+
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
     track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
@@ -81,7 +89,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = st.session_state.get('language', 'Arabic')
+        language = determine_language()
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
@@ -232,4 +240,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Version: 1.5 - Fixed missing questions and updated scoring logic.
+# Version: 1.6 - Added English proficiency question and updated language determination logic.
