@@ -40,6 +40,8 @@ def load_custom_styles():
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     except FileNotFoundError:
         st.error("Error: The 'style.css' file is missing. Please ensure it exists in the correct location.")
+    except Exception as e:
+        st.error(f"Error loading CSS file: {e}")
 
 def display_question(q_data):
     """Display the current question and options."""
@@ -68,9 +70,17 @@ def display_question(q_data):
 def update_scores(responses_list, current_question_key):
     """Update scores based on user responses."""
     weight = TRAIT_QUESTIONS[current_question_key].get("weight", 1)
-    for _, skill in responses_list:
+    for option, skill in responses_list:
         if skill in st.session_state['score']:
             st.session_state['score'][skill] += weight
+        
+        # Update session state for language-related questions
+        if current_question_key == "Language":
+            st.session_state['language'] = skill
+        elif current_question_key == "English Proficiency":
+            st.session_state['english_proficiency'] = skill
+        elif current_question_key == "Language Usage":
+            st.session_state['language_usage'] = skill
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
