@@ -66,7 +66,7 @@
         ["&nbsp;&nbsp; بحاول أقدم كل فكرة بطريقة خفيفة وسهلة توصل للجميع ", "Content Creation"],
         ["&nbsp;&nbsp; بحاول ألعب بالتفاصيل عشان تبرز المعنى أو الفكرة بطريقة واضحة ", "Design & Editing"]
       ],
-      "weight": 20
+      "weight": 3
     },
     "Interests": {
       "question": "ايه اللى بتستمتع بيه لما تكون فاضى ؟",
@@ -90,7 +90,7 @@
         ["&nbsp;&nbsp; بحب أوثق اللحظات بطريقتي الخاصة سواء بالكتابة أو التصوير.", "Content Creation"],
         ["&nbsp;&nbsp; بحب أتعلم حاجات جديدة على الإنترنت، خاصة لما يكون فيها تحدي.", "Web & Programming"]
       ],
-      "weight": 15
+      "weight": 2
     },
     "Rewards": {
       "question": "ايه نوع المهام اللى بتحس انك انجزت حاجة كبيرة لما بتعملها؟",
@@ -118,7 +118,47 @@
         ["&nbsp;&nbsp; لما أشرح فكرة أو منتج وألاقي حد فعلاً استفاد منها أو أخد خطوة بفضل كلامي.", "Sales"],
         ["&nbsp;&nbsp; لما أوصل رسالة معينة بطريقة تخليها تفضل في أذهان الناس وتعلم معاهم.", "Marketing"]
       ],
-      "weight": 30
+      "weight": 3
+    },
+    "Work Nature": {
+      "question": " ايه طريقة الشغل اللى بترتاح فيها اكتر؟",
+      "options": [
+        "&nbsp;&nbsp; بحب امشى على خطة والتزم بمواعيد وساعات عمل ثابتة",
+        "&nbsp;&nbsp; يبقى عندي تارجت  بمعاد معين بس اشتغل وقت ما احب",
+        "&nbsp;&nbsp; مزيج من الاثنين"
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; بحب امشى على خطة والتزم بمواعيد وساعات عمل ثابتة", "Structured"],
+        ["&nbsp;&nbsp; يبقى عندي تارجت  بمعاد معين بس اشتغل وقت ما احب", "Flexible"],
+        ["&nbsp;&nbsp; مزيج من الاثنين", "Mixed"]
+      ],
+      "weight": 2
+    },
+    "Language": {
+      "question": " ايه اللغة اللى حابب تدرس بيها؟",
+      "options": [
+        "&nbsp;&nbsp; العربية",
+        "&nbsp;&nbsp; الإنجليزية"
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; العربية", "Arabic"],
+        ["&nbsp;&nbsp; الإنجليزية", "English"]
+      ],
+      "weight": 1
+    },
+    "Language Usage": {
+      "question": "بتستخدم اللغة دى قد ايه فى شغلك وخلال يومك؟",
+      "options": [
+        "&nbsp;&nbsp; نادرًا",
+        "&nbsp;&nbsp; أحيانًا",
+        "&nbsp;&nbsp; دائمًا"
+      ],
+      "responses": [
+        ["&nbsp;&nbsp; نادرًا", "Basic"],
+        ["&nbsp;&nbsp; أحيانًا", "Intermediate"],
+        ["&nbsp;&nbsp; دائمًا", "Fluent"]
+      ],
+      "weight": 1
     },
     "Industry Preference": {
       "question": "ايه المجالات اللى بتهتم بيها اكتر؟",
@@ -126,16 +166,16 @@
         "&nbsp;&nbsp; التكنولوجيا والبرمجة",
         "&nbsp;&nbsp; التسويق والمبيعات",
         "&nbsp;&nbsp; التصميم والفيديو جرافيكس",
-        "&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى"
+        "&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى "
       ],
       "responses": [
         ["&nbsp;&nbsp; التكنولوجيا والبرمجة", "Web & Programming"],
         ["&nbsp;&nbsp; التسويق والمبيعات", "Marketing"],
         ["&nbsp;&nbsp; التسويق والمبيعات", "Sales"],
         ["&nbsp;&nbsp; التصميم والفيديو جرافيكس", "Design & Editing"],
-        ["&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى", "Content Creation"]
+        ["&nbsp;&nbsp; السوشيال ميديا وإنشاء المحتوى ", "Content Creation"]
       ],
-      "weight": 40
+      "weight": 2
     }
   },
   "level_questions": {
