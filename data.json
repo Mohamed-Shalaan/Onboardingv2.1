@@ -161,18 +161,22 @@
       "weight": 1
     },
     "English Proficiency": {
-      "question": "What is your English proficiency level?",
+      "question": "What is your English proficiency level? (CEFR)",
       "options": [
-        "&nbsp;&nbsp; C1 - Advanced",
+        "&nbsp;&nbsp; A1 - Beginner",
+        "&nbsp;&nbsp; A2 - Elementary",
+        "&nbsp;&nbsp; B1 - Intermediate",
         "&nbsp;&nbsp; B2 - Upper Intermediate",
-        "&nbsp;&nbsp; A2 - Pre-Intermediate",
-        "&nbsp;&nbsp; A1 - Beginner"
+        "&nbsp;&nbsp; C1 - Advanced",
+        "&nbsp;&nbsp; C2 - Proficient"
       ],
       "responses": [
-        ["&nbsp;&nbsp; C1 - Advanced", "Advanced"],
-        ["&nbsp;&nbsp; B2 - Upper Intermediate", "Intermediate"],
-        ["&nbsp;&nbsp; A2 - Pre-Intermediate", "Basic"],
-        ["&nbsp;&nbsp; A1 - Beginner", "Basic"]
+        ["&nbsp;&nbsp; A1 - Beginner", "A1"],
+        ["&nbsp;&nbsp; A2 - Elementary", "A2"],
+        ["&nbsp;&nbsp; B1 - Intermediate", "B1"],
+        ["&nbsp;&nbsp; B2 - Upper Intermediate", "B2"],
+        ["&nbsp;&nbsp; C1 - Advanced", "C1"],
+        ["&nbsp;&nbsp; C2 - Proficient", "C2"]
       ],
       "weight": 1
     }

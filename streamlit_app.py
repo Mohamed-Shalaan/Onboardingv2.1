@@ -64,7 +64,8 @@ def update_scores(responses_list, current_question_key):
 def determine_language():
     """Determine the user's preferred language based on their choices."""
     if st.session_state.get('language') == "English":
-        if st.session_state.get('english_proficiency') in ["Advanced", "Intermediate"]:
+        english_proficiency = st.session_state.get('english_proficiency')
+        if english_proficiency in ["B1", "B2", "C1", "C2"]:
             return "English"
     return "Arabic"
 
