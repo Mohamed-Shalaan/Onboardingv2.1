@@ -2,8 +2,15 @@ import streamlit as st
 import json
 
 # Load data from JSON file
-with open('data.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
+try:
+    with open('data.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+except FileNotFoundError:
+    st.error("Error: The data file (data.json) is missing. Please ensure it exists in the correct location.")
+    st.stop()
+except json.JSONDecodeError:
+    st.error("Error: The data file (data.json) is corrupted or improperly formatted.")
+    st.stop()
 
 SKILLS_INFO = data["skills_info"]
 TRAIT_QUESTIONS = data["trait_questions"]
@@ -24,11 +31,15 @@ def initialize_session_state():
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
         st.session_state['english_proficiency'] = None  # Track English proficiency
+        st.session_state['language_usage'] = None  # Track language usage regularity
 
 def load_custom_styles():
     """Load custom CSS styles from an external file."""
-    with open('styles.css', 'r', encoding='utf-8') as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    try:
+        with open('style.css', 'r', encoding='utf-8') as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error("Error: The 'style.css' file is missing. Please ensure it exists in the correct location.")
 
 def display_question(q_data):
     """Display the current question and options."""
@@ -63,10 +74,10 @@ def update_scores(responses_list, current_question_key):
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
-    # Debugging: Print session state values
-    print("Language Preference:", st.session_state.get('language'))
-    print("English Proficiency:", st.session_state.get('english_proficiency'))
-    print("Language Usage:", st.session_state.get('language_usage'))
+    # Debugging: Display session state values
+    st.write("Language Preference:", st.session_state.get('language'))
+    st.write("English Proficiency:", st.session_state.get('english_proficiency'))
+    st.write("Language Usage:", st.session_state.get('language_usage'))
     
     # Check if the user selected English as their preferred language
     if st.session_state.get('language') == "English":
@@ -75,18 +86,18 @@ def determine_language():
         
         # Determine if the user is proficient enough to use English
         if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
-            print("Language determined: English")
+            st.write("Language determined: English")
             return "English"
     # Default to Arabic if conditions are not met
-    print("Language determined: Arabic")
+    st.write("Language determined: Arabic")
     return "Arabic"
 
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
-    # Debugging: Print input values
-    print("Track:", track)
-    print("Level:", level)
-    print("Language:", language)
+    # Debugging: Display input values
+    st.write("Track:", track)
+    st.write("Level:", level)
+    st.write("Language:", language)
     
     track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
     level_mapping = {"Beginner": "1", "Intermediate": "2", "Advanced": "3"}
@@ -95,8 +106,8 @@ def generate_course_hint(track, level, language):
     language_code = language_mapping.get(language, "U")  # Default to "U" (Unknown) if language is not found
     result_code = f"{track_abbr}{level_code}{language_code}"
     
-    # Debugging: Print the generated result code
-    print("Generated Result Code:", result_code)
+    # Debugging: Display the generated result code
+    st.write("Generated Result Code:", result_code)
     return result_code
 
 def show_results():
@@ -110,7 +121,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = determine_language()
+        language = determine_language()  # Use the updated function here
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
@@ -118,7 +129,7 @@ def show_results():
         # Generate result code
         result_code = generate_course_hint(top_skill, level, language)
         
-        # Use inline styles for the results section
+        # Display results
         st.markdown(
             f"""
             <div class='results-section'>
@@ -155,6 +166,12 @@ def main():
     """Main function to run the Streamlit app."""
     initialize_session_state()
     load_custom_styles()
+
+    # Debugging: Display session state
+    st.sidebar.write("### Debug Information")
+    st.sidebar.write("Language Preference:", st.session_state.get('language'))
+    st.sidebar.write("English Proficiency:", st.session_state.get('english_proficiency'))
+    st.sidebar.write("Language Usage:", st.session_state.get('language_usage'))
 
     # Add logo
     st.markdown(
@@ -260,5 +277,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Version: 1.7 - Added full CEFR rating options and fixed language determination logic.
+    
