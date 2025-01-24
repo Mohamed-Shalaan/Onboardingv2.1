@@ -63,6 +63,11 @@ def update_scores(responses_list, current_question_key):
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
+    # Debugging: Print session state values
+    print("Language Preference:", st.session_state.get('language'))
+    print("English Proficiency:", st.session_state.get('english_proficiency'))
+    print("Language Usage:", st.session_state.get('language_usage'))
+    
     # Check if the user selected English as their preferred language
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
@@ -70,18 +75,28 @@ def determine_language():
         
         # Determine if the user is proficient enough to use English
         if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
+            print("Language determined: English")
             return "English"
     # Default to Arabic if conditions are not met
+    print("Language determined: Arabic")
     return "Arabic"
 
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
+    # Debugging: Print input values
+    print("Track:", track)
+    print("Level:", level)
+    print("Language:", language)
+    
     track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
     level_mapping = {"Beginner": "1", "Intermediate": "2", "Advanced": "3"}
     level_code = level_mapping.get(level, "0")  # Default to "0" if level is not found
     language_mapping = {"Arabic": "A", "English": "E"}
     language_code = language_mapping.get(language, "U")  # Default to "U" (Unknown) if language is not found
     result_code = f"{track_abbr}{level_code}{language_code}"
+    
+    # Debugging: Print the generated result code
+    print("Generated Result Code:", result_code)
     return result_code
 
 def show_results():
