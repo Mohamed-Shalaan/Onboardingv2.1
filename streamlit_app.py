@@ -1,4 +1,3 @@
-
 import streamlit as st
 import json
 
@@ -25,6 +24,7 @@ def initialize_session_state():
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
         st.session_state['english_proficiency'] = None  # Track English proficiency
+        st.session_state['language_usage'] = None  # Track language usage regularity
 
 def load_custom_styles():
     """Load custom CSS styles from an external file."""
@@ -58,15 +58,26 @@ def display_question(q_data):
 def update_scores(responses_list, current_question_key):
     """Update scores based on user responses."""
     weight = TRAIT_QUESTIONS[current_question_key].get("weight", 1)
-    for _, skill in responses_list:
+    for option, skill in responses_list:
         if skill in st.session_state['score']:
             st.session_state['score'][skill] += weight
+        
+        # Update session state for language-related questions
+        if current_question_key == "Language":
+            st.session_state['language'] = skill
+        elif current_question_key == "English Proficiency":
+            st.session_state['english_proficiency'] = skill
+        elif current_question_key == "Language Usage":
+            st.session_state['language_usage'] = skill
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
-        if english_proficiency in ["B1", "B2", "C1", "C2"]:
+        language_usage = st.session_state.get('language_usage')
+        
+        # Determine if the user is proficient enough to use English
+        if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
             return "English"
     return "Arabic"
 
@@ -91,7 +102,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = determine_language()
+        language = determine_language()  # Use the updated function here
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
