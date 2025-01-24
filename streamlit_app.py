@@ -63,10 +63,15 @@ def update_scores(responses_list, current_question_key):
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
+    # Check if the user selected English as their preferred language
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
-        if english_proficiency in ["B1", "B2", "C1", "C2"]:
+        language_usage = st.session_state.get('language_usage')
+        
+        # Determine if the user is proficient enough to use English
+        if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
             return "English"
+    # Default to Arabic if conditions are not met
     return "Arabic"
 
 def generate_course_hint(track, level, language):
@@ -90,7 +95,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = determine_language()
+        language = determine_language()  # Use the updated function here
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
@@ -98,7 +103,7 @@ def show_results():
         # Generate result code
         result_code = generate_course_hint(top_skill, level, language)
         
-        # Use inline styles for the results section
+        # Display results
         st.markdown(
             f"""
             <div class='results-section'>
@@ -106,6 +111,25 @@ def show_results():
                 <h3 style='font-family: Cairo, sans-serif;'>الكورس اللى هتبدأ فيه:</h3>
                 <p>- {recommended_course['name'] if recommended_course else 'No course found'}</p>
                 <h3 style='font-family: Cairo, sans-serif;'> حاجات هتساعدك جنب الكورس:</h3>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Display additional resources
+        for resource_type in ["Books", "Podcasts"]:
+            if skill_data["resources"].get(resource_type):
+                st.markdown(
+                    f"<div style='font-family: Cairo, sans-serif; font-size: 1.2em; direction: rtl;'>- {skill_data['resources'][resource_type][0]} ({resource_type})</div>",
+                    unsafe_allow_html=True
+                )
+        
+        # Display the result code
+        st.markdown(
+            f"""
+            <div class='results-section'>
+                <h3 style='font-family: Cairo, sans-serif;'>رمز الكورس:</h3>
+                <p style='font-family: Cairo, sans-serif; font-size: 1.4em;'>{result_code}</p>
             </div>
             """,
             unsafe_allow_html=True
