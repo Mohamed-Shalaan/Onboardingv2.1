@@ -1,3 +1,4 @@
+
 import streamlit as st
 import json
 
@@ -65,10 +66,7 @@ def determine_language():
     """Determine the user's preferred language based on their choices."""
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
-        language_usage = st.session_state.get('language_usage')
-        
-        # Determine if the user is proficient enough to use English
-        if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
+        if english_proficiency in ["B1", "B2", "C1", "C2"]:
             return "English"
     return "Arabic"
 
@@ -93,7 +91,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = determine_language()  # Use the updated function here
+        language = determine_language()
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
@@ -243,4 +241,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
+# Version: 1.7 
