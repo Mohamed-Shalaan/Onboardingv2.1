@@ -38,7 +38,7 @@ def display_question(q_data):
     responses_list = []
     
     # Use st.radio for single-select questions (questions 4, 5, 6, 7)
-    if st.session_state['question_index'] in [3, 4, 5, 6]:  # Indexes for questions 4, 5, 6, 7
+    if st.session_state['question_index'] >= 3:  # Indexes for questions 4, 5, 6, 7
         selected_option = st.radio("", options, key=f"radio_{st.session_state['question_index']}")
         for option, skill in q_data["responses"]:
             if option == selected_option:
@@ -232,4 +232,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Version: 1.4 - Fixed missing questions and updated scoring logic.
+# Version: 1.5 - Fixed missing questions and updated scoring logic.
