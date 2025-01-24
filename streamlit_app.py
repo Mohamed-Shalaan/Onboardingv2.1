@@ -241,4 +241,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Version: 1.6 - Added English proficiency question and updated language determination logic.
+# Version: 1.7 - Added full CEFR rating options and fixed language determination logic.
