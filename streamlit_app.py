@@ -2,15 +2,8 @@ import streamlit as st
 import json
 
 # Load data from JSON file
-try:
-    with open('data.json', 'r', encoding='utf-8') as f:
-        data = json.load(f)
-except FileNotFoundError:
-    st.error("Error: The data file (data.json) is missing. Please ensure it exists in the correct location.")
-    st.stop()
-except json.JSONDecodeError:
-    st.error("Error: The data file (data.json) is corrupted or improperly formatted.")
-    st.stop()
+with open('data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
 
 SKILLS_INFO = data["skills_info"]
 TRAIT_QUESTIONS = data["trait_questions"]
@@ -31,17 +24,11 @@ def initialize_session_state():
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
         st.session_state['english_proficiency'] = None  # Track English proficiency
-        st.session_state['language_usage'] = None  # Track language usage regularity
 
 def load_custom_styles():
     """Load custom CSS styles from an external file."""
-    try:
-        with open('style.css', 'r', encoding='utf-8') as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-    except FileNotFoundError:
-        st.error("Error: The 'style.css' file is missing. Please ensure it exists in the correct location.")
-    except Exception as e:
-        st.error(f"Error loading CSS file: {e}")
+    with open('styles.css', 'r', encoding='utf-8') as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 def display_question(q_data):
     """Display the current question and options."""
@@ -70,21 +57,12 @@ def display_question(q_data):
 def update_scores(responses_list, current_question_key):
     """Update scores based on user responses."""
     weight = TRAIT_QUESTIONS[current_question_key].get("weight", 1)
-    for option, skill in responses_list:
+    for _, skill in responses_list:
         if skill in st.session_state['score']:
             st.session_state['score'][skill] += weight
-        
-        # Update session state for language-related questions
-        if current_question_key == "Language":
-            st.session_state['language'] = skill
-        elif current_question_key == "English Proficiency":
-            st.session_state['english_proficiency'] = skill
-        elif current_question_key == "Language Usage":
-            st.session_state['language_usage'] = skill
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
-    # Check if the user selected English as their preferred language
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
         language_usage = st.session_state.get('language_usage')
@@ -92,7 +70,6 @@ def determine_language():
         # Determine if the user is proficient enough to use English
         if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
             return "English"
-    # Default to Arabic if conditions are not met
     return "Arabic"
 
 def generate_course_hint(track, level, language):
@@ -124,7 +101,7 @@ def show_results():
         # Generate result code
         result_code = generate_course_hint(top_skill, level, language)
         
-        # Display results
+        # Use inline styles for the results section
         st.markdown(
             f"""
             <div class='results-section'>
