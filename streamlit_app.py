@@ -84,11 +84,6 @@ def update_scores(responses_list, current_question_key):
 
 def determine_language():
     """Determine the user's preferred language based on their choices."""
-    # Debugging: Display session state values
-    st.write("Language Preference:", st.session_state.get('language'))
-    st.write("English Proficiency:", st.session_state.get('english_proficiency'))
-    st.write("Language Usage:", st.session_state.get('language_usage'))
-    
     # Check if the user selected English as their preferred language
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
@@ -96,28 +91,18 @@ def determine_language():
         
         # Determine if the user is proficient enough to use English
         if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
-            st.write("Language determined: English")
             return "English"
     # Default to Arabic if conditions are not met
-    st.write("Language determined: Arabic")
     return "Arabic"
 
 def generate_course_hint(track, level, language):
     """Generate a result code based on track, level, and language."""
-    # Debugging: Display input values
-    st.write("Track:", track)
-    st.write("Level:", level)
-    st.write("Language:", language)
-    
     track_abbr = track[:3].upper()  # Take the first 3 letters of the track name
     level_mapping = {"Beginner": "1", "Intermediate": "2", "Advanced": "3"}
     level_code = level_mapping.get(level, "0")  # Default to "0" if level is not found
     language_mapping = {"Arabic": "A", "English": "E"}
     language_code = language_mapping.get(language, "U")  # Default to "U" (Unknown) if language is not found
     result_code = f"{track_abbr}{level_code}{language_code}"
-    
-    # Debugging: Display the generated result code
-    st.write("Generated Result Code:", result_code)
     return result_code
 
 def show_results():
@@ -176,12 +161,6 @@ def main():
     """Main function to run the Streamlit app."""
     initialize_session_state()
     load_custom_styles()
-
-    # Debugging: Display session state
-    st.sidebar.write("### Debug Information")
-    st.sidebar.write("Language Preference:", st.session_state.get('language'))
-    st.sidebar.write("English Proficiency:", st.session_state.get('english_proficiency'))
-    st.sidebar.write("Language Usage:", st.session_state.get('language_usage'))
 
     # Add logo
     st.markdown(
@@ -287,3 +266,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
