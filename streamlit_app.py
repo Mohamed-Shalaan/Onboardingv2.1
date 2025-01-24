@@ -186,7 +186,7 @@ def main():
 
         # Display level determination questions
         st.markdown("<h2 style='font-family: Cairo, sans-serif; text-align: center;'>تحديد المستوى</h2>", unsafe_allow_html=True)
-        st.markdown(f"<p class='subtitle-text'> جاوب على الاسئلة دى عشان نحدد مستواك الحالي فى مجال ال  {st.session_state['recommended_track']}.</p>", unsafe_allow_html=True)
+        st.markdown(f"<p class='subtitle-text'>من فضلك أجب على هذه الأسئلة لتحديد مستواك في مجال {st.session_state['recommended_track']}.</p>", unsafe_allow_html=True)
 
         # Ask level determination questions
         level_responses = []
@@ -232,4 +232,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Version: 1.2 - Updated to use st.radio for single-select questions (questions 4, 5, 6).
+# Version: 1.3 - Added "Industry Preference" question and updated scoring logic.
