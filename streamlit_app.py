@@ -95,7 +95,7 @@ def show_results():
         
         # Determine level and language based on user's session state
         level = st.session_state.get('level', 'Beginner')
-        language = determine_language()  # Use the updated function here
+        language = determine_language()
         
         # Find recommended course
         recommended_course = next((course for course in COURSES if course["track"] == top_skill and course["level"] == level and course["language"] == language), None)
@@ -103,7 +103,7 @@ def show_results():
         # Generate result code
         result_code = generate_course_hint(top_skill, level, language)
         
-        # Display results
+        # Use inline styles for the results section
         st.markdown(
             f"""
             <div class='results-section'>
@@ -111,25 +111,6 @@ def show_results():
                 <h3 style='font-family: Cairo, sans-serif;'>الكورس اللى هتبدأ فيه:</h3>
                 <p>- {recommended_course['name'] if recommended_course else 'No course found'}</p>
                 <h3 style='font-family: Cairo, sans-serif;'> حاجات هتساعدك جنب الكورس:</h3>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
-        # Display additional resources
-        for resource_type in ["Books", "Podcasts"]:
-            if skill_data["resources"].get(resource_type):
-                st.markdown(
-                    f"<div style='font-family: Cairo, sans-serif; font-size: 1.2em; direction: rtl;'>- {skill_data['resources'][resource_type][0]} ({resource_type})</div>",
-                    unsafe_allow_html=True
-                )
-        
-        # Display the result code
-        st.markdown(
-            f"""
-            <div class='results-section'>
-                <h3 style='font-family: Cairo, sans-serif;'>رمز الكورس:</h3>
-                <p style='font-family: Cairo, sans-serif; font-size: 1.4em;'>{result_code}</p>
             </div>
             """,
             unsafe_allow_html=True
