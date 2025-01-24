@@ -2,15 +2,8 @@ import streamlit as st
 import json
 
 # Load data from JSON file
-try:
-    with open('data.json', 'r', encoding='utf-8') as f:
-        data = json.load(f)
-except FileNotFoundError:
-    st.error("Error: The data file (data.json) is missing. Please ensure it exists in the correct location.")
-    st.stop()
-except json.JSONDecodeError:
-    st.error("Error: The data file (data.json) is corrupted or improperly formatted.")
-    st.stop()
+with open('data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
 
 SKILLS_INFO = data["skills_info"]
 TRAIT_QUESTIONS = data["trait_questions"]
@@ -31,11 +24,10 @@ def initialize_session_state():
         st.session_state['level_determined'] = False
         st.session_state['recommended_track'] = None
         st.session_state['english_proficiency'] = None  # Track English proficiency
-        st.session_state['language_usage'] = None  # Track language usage regularity
 
 def load_custom_styles():
     """Load custom CSS styles from an external file."""
-    with open('style.css', 'r', encoding='utf-8') as f:
+    with open('styles.css', 'r', encoding='utf-8') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 def display_question(q_data):
@@ -73,10 +65,7 @@ def determine_language():
     """Determine the user's preferred language based on their choices."""
     if st.session_state.get('language') == "English":
         english_proficiency = st.session_state.get('english_proficiency')
-        language_usage = st.session_state.get('language_usage')
-        
-        # Determine if the user is proficient enough to use English
-        if english_proficiency in ["B1", "B2", "C1", "C2"] and language_usage in ["Intermediate", "Fluent"]:
+        if english_proficiency in ["B1", "B2", "C1", "C2"]:
             return "English"
     return "Arabic"
 
